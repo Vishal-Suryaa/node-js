@@ -17,9 +17,9 @@ function checkForAuthentication(req, res, next) {
 
 function restrictTo(roles = ['NORMAL']) {
   return function(req, res, next) {
-    console.log(req.user.role);
+    console.log(req?.user?.role);
     if (!req.user) return res.redirect("/login");
-    if (!roles.includes(req.user.role)) return res.end('You are not authorized to access this page');
+    if (!roles.includes(req?.user?.role)) return res.end('You are not authorized to access this page');
     if (req.user.role) return next();
 
   }
